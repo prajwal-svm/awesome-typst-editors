@@ -1,0 +1,259 @@
+# Typst editors on the site, A to Z by name.
+# Required: name, slug, arrived (first public release or announcement, whichever came first), kinds.
+# The slug is permanent: it titles the editor's discussion, so changing it resets its hearts.
+# Kinds: desktop, web, mobile, terminal. Optional: platforms, description, builder, source,
+# homepage, forum, reddit, license (SPDX id, or none), stars (only for code hosts the build
+# can't query). Where each arrival date came from: docs/data-notes.md.
+
+- name: Collabst
+  slug: collabst
+  arrived: 2026-05-21
+  kinds: [web]
+  platforms: [Self-hosted]
+  description: A self-hosted collaborative workspace for Typst.
+  source: https://github.com/collabst/collabst
+  reddit: https://www.reddit.com/r/typst/comments/1tjl560/introducing_collabst_a_selfhosted_collaborative/
+
+- name: DBV Typst Editor
+  slug: dbv-typst-editor
+  arrived: 2026-09-06
+  kinds: [desktop]
+  platforms: [Windows, macOS, Linux]
+  description: A document-first desktop editor for Typst. Start from a template, write, and watch the PDF update as you type.
+  source: https://github.com/davidbuenov/dbv-typst-editor
+  forum: https://forum.typst.app/t/from-typst-enthusiast-to-builder-introducing-dbv-typst-editor/9845
+
+- name: Edist
+  slug: edist
+  arrived: 2026-06-29
+  kinds: [desktop]
+  platforms: [macOS]
+  description: A native macOS editor for Typst.
+  reddit: https://www.reddit.com/r/typst/comments/1uixxn8/edist_the_native_macos_typst_editor/
+
+- name: Hilbert
+  slug: hilbert
+  arrived: 2026-07-07
+  kinds: [desktop]
+  platforms: [Windows, macOS, Linux]
+  description: An offline scientific IDE for Typst, with live PDF preview and tools for maths and physics.
+  source: https://github.com/aburousan/hilbert-editor
+  forum: https://forum.typst.app/t/9229
+  reddit: https://www.reddit.com/r/typst/comments/1uqkgqj/hilbert_scientific_ide_for_typst/
+
+- name: Inkhaven
+  slug: inkhaven
+  arrived: 2026-05-19
+  kinds: [terminal]
+  platforms: [Windows, macOS, Linux]
+  description: A full-screen terminal editor for writing books and long technical documents in Typst.
+  source: https://github.com/vulogov/blackInkhaven
+  forum: https://forum.typst.app/t/inkhaven-new-tui-text-user-interface-editor-for-typst/8851
+
+- name: InkPond
+  slug: inkpond
+  arrived: 2026-03-19
+  kinds: [mobile]
+  platforms: [iOS, iPadOS]
+  description: A native iOS and iPadOS editor for Typst.
+  source: https://github.com/Lin0u0/InkPond
+  reddit: https://www.reddit.com/r/typst/comments/1rxta6c/i_built_a_native_typst_editor_for_iosipados_open/
+
+- name: Katvan
+  slug: katvan
+  arrived: 2024-01-22
+  kinds: [desktop]
+  platforms: [Windows, macOS, Linux]
+  description: A bare-bones editor for Typst files, with a bias for right-to-left editing.
+  source: https://github.com/IgKh/katvan
+  homepage: https://katvan.app
+
+- name: LeftBlank
+  slug: leftblank
+  arrived: 2026-10-02
+  kinds: [desktop]
+  description: A free, open-source native Typst editor.
+  source: https://github.com/leftblank-app/leftblank
+  homepage: https://leftblank.app
+  reddit: https://www.reddit.com/r/typst/comments/1wvvb9k/im_building_leftblank_a_free_opensource_native/
+
+- name: lumen-edit
+  slug: lumen-edit
+  arrived: 2026-02-07
+  kinds: [web]
+  description: A web editor for Typst.
+  reddit: https://www.reddit.com/r/typst/comments/1qyobbx/my_attempt_at_creating_a_web_editor_with_typst/
+
+- name: LumiType
+  slug: lumitype
+  arrived: 2026-07-24
+  kinds: [desktop]
+  platforms: [macOS, Windows]
+  description: A Typst editor for macOS and Windows.
+  reddit: https://www.reddit.com/r/typst/comments/1v58pzx/lumitype_a_typst_editor_for_macos_windows/
+
+- name: Oleafly
+  slug: oleafly
+  arrived: 2026-07-05
+  kinds: [desktop]
+  platforms: [Windows, macOS, Linux]
+  description: A desktop editor for Typst, LaTeX and Markdown.
+  source: https://github.com/Oleafly/Oleafly
+  homepage: https://oleafly.com
+  forum: https://forum.typst.app/t/10129
+
+- name: Platen
+  slug: platen
+  arrived: 2026-09-13
+  kinds: [desktop]
+  platforms: [Linux]
+  description: An equation editor for Typst and LaTeX maths, for Linux.
+  builder: wisha.page
+  source: https://tangled.org/wisha.page/platen
+  forum: https://forum.typst.app/t/i-made-platen-a-typst-based-equation-editor-for-linux/9896
+  stars: 1
+
+- name: Texpile
+  slug: texpile
+  arrived: 2026-07-15
+  kinds: [desktop]
+  platforms: [Windows, macOS, Linux]
+  description: An offline LaTeX and Typst editor with visual and source editing.
+  source: https://github.com/texpile/texpile
+  homepage: https://texpile.com
+  reddit: https://www.reddit.com/r/typst/comments/1vsz83u/an_open_source_desktop_visual_editor_for_typst/
+
+- name: TeXlyre
+  slug: texlyre
+  arrived: 2025-10-04
+  kinds: [web]
+  description: A local-first LaTeX and Typst web editor with real-time collaboration and offline support.
+  source: https://github.com/TeXlyre/texlyre
+  homepage: https://texlyre.github.io/texlyre/
+
+- name: TINO
+  slug: tino
+  arrived: 2026-05-29
+  kinds: [web]
+  platforms: [Self-hosted]
+  description: A collaborative, self-hosted editing platform around Typst.
+  source: https://github.com/confirm/typarr
+  homepage: https://docs.tinotype.com/
+  forum: https://forum.typst.app/t/8914
+
+- name: Typeset
+  slug: typeset
+  arrived: 2026-06-23
+  kinds: [mobile, desktop]
+  platforms: [iOS, macOS]
+  description: Typst document creation for Apple devices.
+  source: https://github.com/twarge/typeset
+  homepage: https://twarge.com/typeset
+  reddit: https://www.reddit.com/r/typst/comments/1ud267k/typeset/
+
+- name: Typesetter
+  slug: typesetter
+  arrived: 2025-10-03
+  kinds: [desktop]
+  platforms: [Linux]
+  description: A Typst editor for focused writing, made for GNOME.
+  source: https://codeberg.org/haydn/typesetter
+  homepage: https://flathub.org/apps/net.trowell.typesetter
+  reddit: https://www.reddit.com/r/typst/comments/1nwmjtz/typesetter_a_typst_editor_for_gnome_and_linux/
+  license: GPL-3.0
+
+- name: Typsastra
+  slug: typsastra
+  arrived: 2026-06-29
+  kinds: [desktop]
+  platforms: [Windows, macOS, Linux]
+  description: A complex-script-first Typst environment for research and long multilingual writing.
+  source: https://github.com/Sovichea/typsastra
+  forum: https://forum.typst.app/t/9323
+
+- name: typst-wysiwyg
+  slug: typst-wysiwyg
+  arrived: 2026-06-17
+  kinds: [web]
+  description: A block-based WYSIWYG prototype for Typst documents, with no code needed.
+  source: https://github.com/ortic/typst-wysiwyg
+  homepage: https://ortic.github.io/typst-wysiwyg/
+  forum: https://forum.typst.app/t/typst-wysiwyg-word-processor/9109
+
+- name: typst.app
+  slug: typst-app
+  arrived: 2023-03-21
+  kinds: [web]
+  description: The official Typst web app, with real-time collaboration.
+  builder: Typst GmbH
+  homepage: https://typst.app
+
+- name: Typst Desktop
+  slug: typst-desktop
+  arrived: 2026-07-19
+  kinds: [desktop]
+  platforms: [Windows, macOS, Linux]
+  description: A desktop editor for Typst with the compiler built in.
+  source: https://github.com/SirBlobby/typst-desktop
+
+- name: Typst Editor
+  slug: typst-editor-ipad
+  arrived: 2026-03-24
+  kinds: [mobile]
+  platforms: [iPadOS, macOS]
+  description: Edit your Typst project on your iPad, with a live preview.
+  builder: Michele Yin
+  homepage: https://apps.apple.com/app/id6760779674
+
+- name: Typst Online Editor
+  slug: typst-online-editor
+  arrived: 2026-01-02
+  kinds: [web]
+  description: An online Typst editor built with Next.js and the Typst WASM compiler.
+  source: https://github.com/Mapaor/typst-online-editor
+  homepage: https://typst-online-editor.vercel.app
+
+- name: TypstEdit
+  slug: typstedit
+  arrived: 2025-12-08
+  kinds: [desktop]
+  platforms: [macOS]
+  description: A lightweight, native macOS editor for Typst.
+  source: https://github.com/SuperMegaFort/TypstEdit
+  reddit: https://www.reddit.com/r/typst/comments/1phpj40/i_built_a_native_macos_editor_for_typst_with/
+  license: none
+
+- name: Typstify
+  slug: typstify
+  arrived: 2024-12-02
+  kinds: [desktop]
+  description: A cross-platform Typst editor.
+  source: https://github.com/typstify/typstify
+  homepage: https://typstify.com
+  reddit: https://www.reddit.com/r/typst/comments/1h4n9q2/typstify_a_desktop_app_for_typst/
+
+- name: Typstwriter
+  slug: typstwriter
+  arrived: 2024-06-06
+  kinds: [desktop]
+  description: An integrated editor for the Typst typesetting system.
+  source: https://github.com/Bzero/typstwriter
+  license: MIT
+
+- name: Typtic
+  slug: typtic
+  arrived: 2026-07-28
+  kinds: [mobile]
+  platforms: [Android, iOS]
+  description: A native Typst editor for Android and iOS.
+  reddit: https://www.reddit.com/r/typst/comments/1v8xfxg/i_built_a_native_typst_editor_for_android_ios
+
+- name: Typwriter
+  slug: typwriter
+  arrived: 2026-03-15
+  kinds: [desktop]
+  platforms: [Windows, macOS, Linux, Android]
+  description: A text editor for creating and editing documents with Typst.
+  source: https://github.com/Ahdeyyy/typwriter
+  homepage: https://typwriter.vercel.app
+  reddit: https://www.reddit.com/r/typst/comments/1t1y2o1/self_promo_typwriter_typst_text_editor/
