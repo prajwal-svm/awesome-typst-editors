@@ -1,6 +1,7 @@
 // One editor card. Every editor gets exactly this card.
 #import "data.typ": base, kind-label
 #import "copy.typ"
+#import "icons.typ"
 
 #let card(e) = {
   let first = e.kinds.first()
@@ -19,8 +20,14 @@
     html.div(class: "card-foot", {
       if e.builder != none { html.span(class: "card-by", copy.by(e.builder)) }
       html.span(class: "card-counts", {
-        html.elem("span", attrs: (class: "card-hearts", "aria-label": copy.hearts-label(e.hearts)), "♥ " + str(e.hearts))
-        html.elem("span", attrs: (class: "card-comments", "aria-label": copy.comments-label(e.comments)), "💬 " + str(e.comments))
+        html.elem("span", attrs: (class: "card-hearts", "aria-label": copy.hearts-label(e.hearts)), {
+          icons.heart
+          str(e.hearts)
+        })
+        html.elem("span", attrs: (class: "card-comments", "aria-label": copy.comments-label(e.comments)), {
+          icons.comment
+          str(e.comments)
+        })
       })
     })
   })

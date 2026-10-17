@@ -150,8 +150,10 @@ h1 { font-size: clamp(1.7rem, 4.5vw, 2.6rem); line-height: 1.15; margin: 20px 0 
   font-size: 0.85rem;
   color: var(--muted);
 }
-.card-counts { display: inline-flex; gap: 10px; margin-left: auto; }
+.card-counts { display: inline-flex; gap: 12px; margin-left: auto; }
+.card-hearts, .card-comments { display: inline-flex; align-items: center; gap: 4px; }
 .card-hearts { color: var(--heart); }
+.icon { width: 16px; height: 16px; flex: none; }
 
 .month, .kind-group h2 { font-size: 1.1rem; margin: 8px 0 12px; }
 .timeline-entry { display: flex; flex-direction: column; gap: 6px; }

@@ -28,6 +28,10 @@ assert_contains "$T/aurora.html" "<li>Open source</li>"
 assert_contains "$T/aurora.html" "by example"
 assert_contains "$T/aurora.html" 'aria-label="3 hearts"'
 assert_contains "$T/aurora.html" 'aria-label="2 comments"'
+assert_contains "$T/aurora.html" 'class="icon icon-heart"'
+assert_contains "$T/aurora.html" 'class="icon icon-comment"'
+assert_not_contains "$INDEX" "💬"
+assert_not_contains "$INDEX" "♥"
 
 card bramble "$INDEX" >"$T/bramble.html"
 assert_contains "$T/bramble.html" 'class="card-name">bramble<'
