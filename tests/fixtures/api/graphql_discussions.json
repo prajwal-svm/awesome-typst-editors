@@ -1,0 +1,107 @@
+{
+  "data": {
+    "repository": {
+      "id": "R_test",
+      "discussionCategories": {
+        "nodes": [
+          {
+            "id": "DIC_test",
+            "name": "Editors"
+          },
+          {
+            "id": "DIC_general",
+            "name": "General"
+          }
+        ]
+      },
+      "discussions": {
+        "pageInfo": {
+          "hasNextPage": false
+        },
+        "nodes": [
+          {
+            "title": "aurora",
+            "number": 1,
+            "url": "https://github.com/prajwal-svm/awesome-typst-editors/discussions/1",
+            "category": {
+              "name": "Editors"
+            },
+            "reactionGroups": [
+              {
+                "content": "HEART",
+                "reactors": {
+                  "totalCount": 3
+                }
+              },
+              {
+                "content": "THUMBS_UP",
+                "reactors": {
+                  "totalCount": 0
+                }
+              }
+            ],
+            "comments": {
+              "totalCount": 2
+            }
+          },
+          {
+            "title": "delta",
+            "number": 2,
+            "url": "https://github.com/prajwal-svm/awesome-typst-editors/discussions/2",
+            "category": {
+              "name": "Editors"
+            },
+            "reactionGroups": [],
+            "comments": {
+              "totalCount": 0
+            }
+          },
+          {
+            "title": "echo",
+            "number": 3,
+            "url": "https://github.com/prajwal-svm/awesome-typst-editors/discussions/3",
+            "category": {
+              "name": "Editors"
+            },
+            "reactionGroups": [
+              {
+                "content": "HEART",
+                "reactors": {
+                  "totalCount": 10
+                }
+              },
+              {
+                "content": "THUMBS_UP",
+                "reactors": {
+                  "totalCount": 2
+                }
+              }
+            ],
+            "comments": {
+              "totalCount": 1
+            }
+          },
+          {
+            "title": "cinder",
+            "number": 5,
+            "url": "https://github.com/prajwal-svm/awesome-typst-editors/discussions/5",
+            "category": {
+              "name": "General"
+            },
+            "reactionGroups": [
+              {
+                "content": "HEART",
+                "reactors": {
+                  "totalCount": 4
+                }
+              }
+            ],
+            "comments": {
+              "totalCount": 0
+            }
+          }
+        ]
+      }
+    }
+  }
+}
