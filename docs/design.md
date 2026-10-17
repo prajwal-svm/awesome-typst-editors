@@ -89,7 +89,7 @@ The whole card links to the editor's page.
 ### Header and footer
 
 - Header: site name, an "Add an editor" link, and a hero line: "N Typst editors and counting" with "Built by people who love Typst. Leave a heart for the ones you like." N comes from the data.
-- Footer: a short line saying Prajwal made the site and that every editor gets the same card and nothing is sorted by hearts. Exact wording is a placeholder until Prajwal confirms it.
+- Footer, as Prajwal confirmed it: "Made by Prajwal (prajwal-svm). Every editor gets the same card, and nothing is sorted by hearts."
 - Footer also links to "Fix or remove an editor".
 
 ## Hearts and comments

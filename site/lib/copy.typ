@@ -12,8 +12,7 @@
 #let add-editor = "Add an editor"
 #let fix-editor = "Fix or remove an editor"
 #let source-link = "Source on GitHub"
-// Placeholder until Prajwal confirms the wording.
-#let footer-line = "Made by Prajwal (prajwal-svm), who also builds Oleafly. Every editor gets the same card, and nothing is sorted by hearts."
+#let footer-line = "Made by Prajwal (prajwal-svm). Every editor gets the same card, and nothing is sorted by hearts."
 
 #let open-source = "Open source"
 #let by(builder) = "by " + builder
