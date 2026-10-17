@@ -1,0 +1,33 @@
+name: Fix or remove an editor
+description: Correct something about an editor, or ask for it to be removed.
+title: "Fix: "
+labels: ["fix-or-remove"]
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Editor name
+    validations:
+      required: true
+  - type: dropdown
+    id: request
+    attributes:
+      label: What do you need?
+      options:
+        - Fix something
+        - Remove this editor
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: What's wrong, and what should it say instead?
+    validations:
+      required: true
+  - type: checkboxes
+    id: builder
+    attributes:
+      label: About you
+      options:
+        - label: I build this editor

@@ -1,0 +1,49 @@
+name: Add an editor
+description: Suggest a Typst editor for the site and the list.
+title: "Add: "
+labels: ["add-editor"]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for suggesting an editor. Standalone Typst editors and apps are in scope. Plugins for general-purpose editors aren't.
+  - type: input
+    id: name
+    attributes:
+      label: Name
+    validations:
+      required: true
+  - type: input
+    id: code
+    attributes:
+      label: Link to the code
+      description: Leave this empty if the code isn't public.
+  - type: input
+    id: website
+    attributes:
+      label: Website
+  - type: input
+    id: announcement
+    attributes:
+      label: Announcement post
+      description: A Typst forum or Reddit post, if there is one.
+  - type: checkboxes
+    id: kinds
+    attributes:
+      label: Kind
+      options:
+        - label: Desktop
+        - label: Web
+        - label: Mobile
+        - label: Terminal
+  - type: input
+    id: platforms
+    attributes:
+      label: Platforms
+      placeholder: Windows, macOS, Linux
+  - type: input
+    id: description
+    attributes:
+      label: One-line description
+      description: What it is and who it's for, in plain words.
+    validations:
+      required: true

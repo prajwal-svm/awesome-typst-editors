@@ -1,0 +1,43 @@
+name: Counter check
+
+on:
+  schedule:
+    - cron: "23 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+      - uses: typst-community/setup-typst@v5
+        with:
+          typst-version: 0.15.1
+      - name: Compare with the counter
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          mkdir -p build
+          curl -fsSL https://raw.githubusercontent.com/sermuns/days-since-last-typst-editor/main/data.csv -o build/counter.csv
+          missing=$(scripts/missing-from-counter.sh build/counter.csv)
+          if [ -z "$missing" ]; then
+            echo "Every editor on the counter is listed."
+            exit 0
+          fi
+          body="The community counter lists these editors, but data/editors.yaml doesn't have them yet. Check that each one is a standalone Typst editor before adding it."$'\n\n'
+          while IFS= read -r name; do
+            body+="- [ ] $name"$'\n'
+          done <<<"$missing"
+          gh label create counter-check --color c5def5 --description "Editors on the counter that aren't listed yet" --force
+          number=$(gh issue list --label counter-check --state open --json number --jq '.[0].number // empty')
+          if [ -n "$number" ]; then
+            gh issue edit "$number" --body "$body"
+          else
+            gh issue create --title "Editors on the counter that aren't listed yet" --label counter-check --body "$body"
+          fi
