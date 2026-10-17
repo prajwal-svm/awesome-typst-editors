@@ -1,0 +1,39 @@
+# Fixture for the test suite. Compiled as if today were 2026-10-17 (cutoff 2026-09-17).
+- name: Aurora
+  slug: aurora
+  arrived: 2026-03-01
+  kinds: [desktop]
+  source: https://github.com/example/aurora
+
+- name: bramble
+  slug: bramble
+  arrived: 2026-09-17
+  kinds: [web]
+  homepage: https://bramble.example
+
+- name: Cinder
+  slug: cinder
+  arrived: 2026-09-18
+  kinds: [mobile, desktop]
+  source: https://github.com/example/cinder
+
+- name: Delta
+  slug: delta
+  arrived: 2025-05-05
+  kinds: [terminal]
+  source: https://codeberg.org/example/delta
+
+- name: "Echo [Beta] & Co"
+  slug: echo
+  arrived: 2026-08-01
+  kinds: [desktop, web]
+  source: https://github.com/example/echo
+  description: Edits Typst in two places at once
+
+- name: Foxglove
+  slug: foxglove
+  arrived: 2026-08-01
+  kinds: [web]
+  source: https://tangled.org/example/foxglove
+  stars: 75
+  license: MIT

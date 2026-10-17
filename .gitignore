@@ -1,0 +1,4 @@
+_site/
+build/
+data/generated.json
+.DS_Store

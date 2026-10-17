@@ -1,0 +1,4 @@
+- name: Aurora
+  slug: aurora
+  arrived: 2026-03-01
+  kinds: [tablet]

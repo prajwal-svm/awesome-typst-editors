@@ -1,0 +1,3 @@
+- name: Aurora
+  slug: aurora
+  kinds: [desktop]

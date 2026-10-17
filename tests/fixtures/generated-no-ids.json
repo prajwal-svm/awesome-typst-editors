@@ -1,0 +1,58 @@
+{
+  "editors": {
+    "aurora": {
+      "stars": 120,
+      "description": "A calm desktop editor for Typst",
+      "owner": "example",
+      "license": "MIT",
+      "archived": false
+    },
+    "cinder": {
+      "stars": 300,
+      "description": "Typst on your phone",
+      "owner": "example",
+      "license": "Apache-2.0",
+      "archived": false
+    },
+    "delta": {
+      "stars": 49,
+      "description": "Typst in the terminal.",
+      "owner": "example",
+      "license": null,
+      "archived": false
+    },
+    "echo": {
+      "stars": 50,
+      "description": "A fetched description",
+      "owner": "echo-dev",
+      "license": "NOASSERTION",
+      "archived": false
+    }
+  },
+  "discussions": {
+    "aurora": {
+      "number": 1,
+      "url": "https://github.com/prajwal-svm/awesome-typst-editors/discussions/1",
+      "hearts": 3,
+      "comments": 2
+    },
+    "delta": {
+      "number": 2,
+      "url": "https://github.com/prajwal-svm/awesome-typst-editors/discussions/2",
+      "hearts": 0,
+      "comments": 0
+    },
+    "echo": {
+      "number": 3,
+      "url": "https://github.com/prajwal-svm/awesome-typst-editors/discussions/3",
+      "hearts": 10,
+      "comments": 1
+    },
+    "foxglove": {
+      "number": 4,
+      "url": "https://github.com/prajwal-svm/awesome-typst-editors/discussions/4",
+      "hearts": 99,
+      "comments": 7
+    }
+  }
+}
