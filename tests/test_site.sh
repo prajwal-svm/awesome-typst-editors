@@ -76,7 +76,8 @@ assert_contains "$INDEX" 'aria-current="page">A to Z<'
 assert_not_contains "$INDEX" 'aria-current="page">Timeline<'
 assert_contains "$TIMELINE" 'aria-current="page">Timeline<'
 
-assert_contains "$INDEX" "Made by Prajwal (prajwal-svm). Every editor gets the same card, and nothing is sorted by hearts."
+assert_contains "$INDEX" "Made by Prajwal (prajwal-svm)."
+assert_not_contains "$INDEX" "Every editor gets the same card"
 assert_not_contains "$INDEX" "who also builds Oleafly"
 assert_contains "$INDEX" "https://github.com/prajwal-svm/awesome-typst-editors/issues/new?template=add-editor.yml"
 assert_contains "$INDEX" "https://github.com/prajwal-svm/awesome-typst-editors/issues/new?template=fix-or-remove.yml"

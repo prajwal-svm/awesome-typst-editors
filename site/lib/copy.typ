@@ -12,7 +12,7 @@
 #let add-editor = "Add an editor"
 #let fix-editor = "Fix or remove an editor"
 #let source-link = "Source on GitHub"
-#let footer-line = "Made by Prajwal (prajwal-svm). Every editor gets the same card, and nothing is sorted by hearts."
+#let footer-line = "Made by Prajwal (prajwal-svm)."
 
 #let open-source = "Open source"
 #let by(builder) = "by " + builder
@@ -55,7 +55,7 @@
 #let readme-contributing-heading = "Contributing"
 #let readme-contributing(repo-url) = "Know an editor that's missing? Use the [add an editor form](" + repo-url + "/issues/new?template=add-editor.yml) or open a pull request that edits `data/editors.yaml`. This README is generated from that file, so please don't edit it by hand."
 #let readme-license-heading = "License"
-#let readme-license = "[CC0 1.0](LICENSE)"
+#let readme-license = "The list and the site's code are under [CC0 1.0](LICENSE). Screenshots belong to their projects. The heart and comment icons come from [Lucide](https://lucide.dev) and are under the [ISC license](assets/LUCIDE-LICENSE.txt)."
 #let readme-fallback-description(kind) = "A Typst " + kind + " editor"
 
 #let screenshot-alt(name) = "Screenshot of " + name

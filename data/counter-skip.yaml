@@ -1,0 +1,8 @@
+# Editors on the community counter that were checked and left out, with the reason.
+# The weekly counter check skips them. Delete an entry when its editor is added.
+- name: Dotei
+  reason: "Announced on r/typst in July 2026 as a web editor for several markup languages, but not hosted or released yet."
+- name: typress
+  reason: "Only an r/typst post so far (\"I'm developing a new Typst editor\"). Its kind and platforms couldn't be confirmed."
+- name: TypeTex
+  reason: "Only an r/typst post about a real-time collaborative editor. Its kind and platforms couldn't be confirmed."

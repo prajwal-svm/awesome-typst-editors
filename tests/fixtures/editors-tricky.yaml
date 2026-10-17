@@ -1,0 +1,17 @@
+# Fixture: names and descriptions that try to break HTML, JSON-LD and Markdown.
+- name: "Tricky <b>Bold</b> *Star* [x] & Co"
+  slug: tricky
+  arrived: 2026-01-01
+  kinds: [desktop]
+  source: https://github.com/example/tricky
+  description: "Ends the script <!--<script> and uses [link](http://x.example) with _under_ and `code`"
+  stars: 99
+
+- name: Blank
+  slug: blank
+  arrived: 2026-01-01
+  kinds: [web]
+  source: https://github.com/example/blank
+  description: "   "
+  builder: ""
+  stars: 120

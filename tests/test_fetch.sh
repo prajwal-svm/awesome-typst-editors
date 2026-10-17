@@ -30,11 +30,17 @@ code=$?
 assert_eq "$code" "1" "exit code on API failure"
 assert_eq "$F" "" "stdout on API failure"
 
-P=$(STUB_GRAPHQL=tests/fixtures/api/graphql_discussions_more.json bash scripts/fetch-data.sh 2>"$T/err-more")
+# The same when the discussions query fails, so hearts never reach the build as zeros.
+F=$(STUB_FAIL_ON=categoryId bash scripts/fetch-data.sh 2>/dev/null)
 code=$?
-assert_eq "$code" "1" "exit code with more than 100 discussions"
-assert_eq "$P" "" "stdout with more than 100 discussions"
-assert_contains "$T/err-more" "add pagination"
+assert_eq "$code" "1" "exit code when the discussions query fails"
+assert_eq "$F" "" "stdout when the discussions query fails"
+
+# More than one page of discussions: every page is read.
+P=$(STUB_GRAPHQL=tests/fixtures/api/graphql_page1.json STUB_GRAPHQL_NEXT=tests/fixtures/api/graphql_page2.json bash scripts/fetch-data.sh 2>"$T/err-pages") ||
+  fail "paged fetch failed: $(cat "$T/err-pages")"
+assert_eq "$(jq -r .discussions.aurora.hearts <<<"$P")" "3" "page 1 read"
+assert_eq "$(jq -r .discussions.echo.hearts <<<"$P")" "10" "page 2 read"
 
 assert_eq "$(bash -c 'source scripts/lib.sh && sha1_hex echo')" "b2d21e771d9f86865c5eff193663574dd1796c8f" "sha1_hex"
 

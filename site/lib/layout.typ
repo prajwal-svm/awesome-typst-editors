@@ -5,8 +5,9 @@
 
 #let meta-property(property, content) = html.elem("meta", attrs: (property: property, content: content))
 
-// JSON-LD sits inside <script>, so "</" must never appear raw.
-#let ld-json(data) = json.encode(data, pretty: false).replace("</", "<\\/")
+// JSON-LD sits inside <script>, where "</script" ends it early and "<!--" can swallow the
+// rest of the page, so no "<" appears raw. JSON readers decode \u003c back to "<".
+#let ld-json(data) = json.encode(data, pretty: false).replace("<", "\\u003c")
 
 #let link-to(url, label, class: none) = {
   let attrs = (:)

@@ -3,6 +3,9 @@
 #   STUB_GRAPHQL  fixture served for GraphQL queries
 #   STUB_LOG      file that gets one JSON line per createDiscussion call
 #   STUB_FAIL_ON  fail when the arguments contain this text
+#   STUB_GRAPHQL_NEXT  fixture served for GraphQL queries that pass a cursor
+#   STUB_OPEN_ISSUE    number printed by "gh issue list" (default: none open)
+# "gh issue" and "gh label" calls are logged to STUB_LOG, one line each.
 set -uo pipefail
 fixtures="$(cd "$(dirname "$0")/.." && pwd)/fixtures/api"
 
@@ -10,6 +13,13 @@ if [ -n "${STUB_FAIL_ON:-}" ] && [[ "$*" == *"$STUB_FAIL_ON"* ]]; then
   echo "stub gh: simulated failure for: $*" >&2
   exit 1
 fi
+case "${1:-}" in
+  issue | label)
+    printf '%s\n' "$*" >>"${STUB_LOG:?STUB_LOG is not set}"
+    if [ "$1 ${2:-}" = "issue list" ]; then printf '%s\n' "${STUB_OPEN_ISSUE:-}"; fi
+    exit 0
+    ;;
+esac
 [ "${1:-}" = "api" ] || { echo "stub gh: unsupported command: $*" >&2; exit 1; }
 shift
 
@@ -31,6 +41,8 @@ case "${1:-}" in
       done
       printf '%s\n' "$fields" >>"${STUB_LOG:?STUB_LOG is not set}"
       echo '{"data":{"createDiscussion":{"discussion":{"number":9,"url":"u"}}}}'
+    elif [[ "$*" == *"cursor="* ]] && [ -n "${STUB_GRAPHQL_NEXT:-}" ]; then
+      cat "$STUB_GRAPHQL_NEXT"
     else
       cat "${STUB_GRAPHQL:?STUB_GRAPHQL is not set}"
     fi

@@ -89,7 +89,7 @@ The whole card links to the editor's page.
 ### Header and footer
 
 - Header: site name, an "Add an editor" link, and a hero line: "N Typst editors and counting" with "Built by people who love Typst. Leave a heart for the ones you like." N comes from the data.
-- Footer, as Prajwal confirmed it: "Made by Prajwal (prajwal-svm). Every editor gets the same card, and nothing is sorted by hearts."
+- Footer, as Prajwal confirmed it: "Made by Prajwal (prajwal-svm)."
 - Footer also links to "Fix or remove an editor".
 
 ## Hearts and comments
@@ -105,12 +105,12 @@ The whole card links to the editor's page.
 ## Data
 
 - Source of truth: `data/editors.yaml` in the repo (design call). Typst reads YAML directly.
-- Fields per editor: `name`, `slug`, `arrived` (date), `kinds` (list of desktop, web, mobile, terminal), `platforms`, `description`, `builder`, `source`, `homepage`, `forum`, `reddit`, and `stars` for code hosts the build can't query (it fetches GitHub and Codeberg stars itself).
+- Fields per editor: `name`, `slug`, `arrived` (date), `kinds` (list of desktop, web, mobile, terminal), `platforms`, `description`, `builder`, `source`, `homepage`, `forum`, `reddit`, `stars` for code hosts the build can't query (it fetches GitHub and Codeberg stars itself), and `license` where the code host can't detect it. Blank values count as missing. An unknown field, or a value of the wrong type, stops the build with a message naming the editor.
 - Seed: the 25 entries in `data.csv` from https://github.com/sermuns/days-since-last-typst-editor (WTFPL, so reuse needs no credit), as of 2026-10-17. Its columns are date, name, source_code_url, reddit_url and typst_forum_url. Add Oleafly the same way: arrived 2026-07-05 (v0.1.0, its first public release), source https://github.com/Oleafly/Oleafly, forum https://forum.typst.app/t/10129.
 - `arrived` means the date the editor first went public: its first public release or its first announcement, whichever came first. Check every seed date against the project's own release history (design call). The seed is sometimes off. It lists Typstwriter as September 2026, but its repo dates from April 2024 and v0.1 was on PyPI in June 2024. Keep a seed date only when nothing earlier can be found. Entries that can only be checked on Reddit go on a list for Prajwal to check by hand, since Reddit blocks automated reading.
 - Kinds, platforms, descriptions and builders are filled in by hand from each project's own README or announcement, since the seed doesn't have them. Descriptions stay factual and short.
 - Build-time data: a script in the workflow fetches, for GitHub-hosted projects, the repo description, owner and license, and for every editor, the discussion's heart and comment counts. It writes `data/generated.json`, which Typst reads next to `editors.yaml`. Hand-written fields in `editors.yaml` win over fetched ones.
-- Card images: every editor gets the same generated image in the site's style, showing its name and kind. No images are copied from GitHub, websites or Reddit. The editor page links to the project for real screenshots.
+- Card images: a screenshot from the project's README or a capture of its website, listed in `data/screenshots.yaml` and credited on the editor page. Editors without one get a plain banner in the site's style, showing the name and kind. A builder can ask for a screenshot to be removed or changed.
 
 ### Who's included
 
@@ -122,7 +122,7 @@ The whole card links to the editor's page.
 
 - "Add an editor" opens a GitHub issue form (name, link to code or website, announcement post, kinds, platforms, one-line description). Prajwal reviews it and adds the entry. Pull requests that edit `data/editors.yaml` are welcome too.
 - "Fix or remove an editor" opens a second issue form. Requests from an editor's builder are honored.
-- A weekly job compares names in the counter's `data.csv` with `editors.yaml` and opens (or updates) one issue listing editors that are missing (design call). It never adds anything by itself.
+- A weekly job compares names in the counter's `data.csv` with `editors.yaml` and opens (or updates) one issue listing editors that are missing (design call). Editors that were checked and left out go in `data/counter-skip.yaml` with the reason, and the job skips them. Once nothing is missing, it closes the issue. It never adds anything by itself.
 
 ## README (the awesome list)
 
@@ -134,7 +134,7 @@ The whole card links to the editor's page.
 ## Build and hosting
 
 - Public repo, GitHub Pages, GitHub Actions, GitHub Discussions and giscus.app. All free. No custom domain: the address is `https://prajwal-svm.github.io/awesome-typst-editors/`. A custom domain can be added later.
-- License: CC0 for everything in the repo, in place before the first public push.
+- License: CC0 for everything in the repo, in place before the first public push, except the screenshots, which belong to their projects, and the two Lucide icons, which are ISC.
 - The page is built the way the counter site is built, which already works: `typst compile main.typ . --format bundle --features bundle,html`, set up with `typst-community/setup-typst` and deployed with `actions/deploy-pages`. Pin the Typst version instead of floating on latest.
 - Workflow triggers: push to main, an hourly schedule, and manual runs. Steps: check out, fetch data and counts, compile with Typst, upload the Pages artifact, deploy.
 - The README is regenerated on every build and committed only when its text changes, which happens when the data changes or an editor crosses the 50-star line.

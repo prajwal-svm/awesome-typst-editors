@@ -15,4 +15,6 @@ assert_no_file "$OUT/editors/leftblank"
 grep -qE 'Arrived [0-9]+ [A-Z][a-z]{2} 2024' "$OUT/editors/typstwriter/index.html" 2>/dev/null ||
   fail "Typstwriter should show an arrival in 2024"
 
+assert_contains "$OUT/editors/platen/index.html" "<li>Open source</li>"
+
 finish

@@ -15,7 +15,7 @@ contents=$(awk '/^## Contents/{f=1; next} /^## /{f=0} f && NF' "$README" | paste
 assert_eq "$contents" '- [Desktop](#desktop)|- [Web](#web)' "Contents"
 
 assert_contains "$README" '- [Aurora](https://github.com/example/aurora) - A calm desktop editor for Typst.'
-assert_contains "$README" '- [Echo \[Beta\] & Co](https://github.com/example/echo) - Edits Typst in two places at once.'
+assert_contains "$README" '- [Echo \[Beta\] \& Co](https://github.com/example/echo) - Edits Typst in two places at once.'
 assert_contains "$README" '- [Foxglove](https://tangled.org/example/foxglove) - A Typst web editor.'
 assert_eq "$(grep -c 'Echo' "$README")" "1" "Echo appears once"
 
@@ -29,5 +29,6 @@ done < <(grep -F '](http' "$README" | grep -E '^- \[')
 
 assert_contains "$README" "## Contributing"
 assert_contains "$README" "## License"
+assert_contains "$README" "Screenshots belong to their projects"
 
 finish

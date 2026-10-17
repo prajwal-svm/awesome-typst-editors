@@ -2,7 +2,13 @@
 #import "data.typ": kind-order, kind-label, by-name, site-url, repo-url
 #import "copy.typ"
 
-#let escape-name(name) = name.replace("[", "\\[").replace("]", "\\]")
+// Backslash-escapes Markdown punctuation, so names and descriptions show exactly as written.
+// The backslash goes first, so the escapes added after it stay single.
+#let escape-markdown(s) = {
+  let out = s
+  for c in ("\\", "`", "*", "_", "~", "[", "]", "<", ">", "&") { out = out.replace(c, "\\" + c) }
+  out
+}
 
 // An initial capital and a final period, as awesome lists expect.
 #let readme-description(e) = {
@@ -14,14 +20,14 @@
   let first = text.clusters().first()
   text = upper(first) + text.slice(first.len())
   if not text.ends-with(".") { text += "." }
-  text
+  escape-markdown(text)
 }
 
 #let readme-link(e) = if e.source != none { e.source } else if e.homepage != none { e.homepage } else {
   site-url + "editors/" + e.slug + "/"
 }
 
-#let readme-item(e) = "- [" + escape-name(e.name) + "](" + readme-link(e) + ") - " + readme-description(e)
+#let readme-item(e) = "- [" + escape-markdown(e.name) + "](" + readme-link(e) + ") - " + readme-description(e)
 
 // Each editor appears once, under the first kind it lists.
 #let readme-markdown(list) = {

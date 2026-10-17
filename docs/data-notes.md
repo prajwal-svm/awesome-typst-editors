@@ -15,10 +15,10 @@ Where each editor's arrival date came from, as of 17 October 2026. `arrived` is 
 | lumen-edit | 2026-02-07 | r/typst announcement (counter) | No public code. |
 | LumiType | 2026-07-24 | r/typst announcement (counter) | No public code. |
 | Oleafly | 2026-07-05 | First GitHub release (v0.1.0) | Forum post on 2026-10-17. |
-| Platen | 2026-09-13 | Typst forum announcement | Hosted on tangled.org (1 star). Its LICENSE file couldn't be read with the tools used, so no license is set. |
+| Platen | 2026-09-13 | Typst forum announcement | Hosted on tangled.org (1 star). License GPL-3.0, checked by hand. |
 | Texpile | 2026-07-15 | First GitHub release | Counter says 2026-08-19. |
-| TeXlyre | 2025-10-04 | First GitHub release | Started as a LaTeX editor. Typst support came in a later release; that date wasn't checked. Not on the counter. |
-| TINO | 2026-05-29 | Typst forum announcement (t/8914) | Formerly Typarr; the repo is still `confirm/typarr`. No releases. Not on the counter. |
+| TeXlyre | 2025-10-04 | First GitHub release | Its first release, v0.3.1, added Typst next to LaTeX. Not on the counter. |
+| TINO | 2026-05-29 | Typst forum announcement (t/8914) | Formerly Typarr; the repo was renamed from `confirm/typarr` to `confirm/tino`. No releases. Not on the counter. |
 | Typeset | 2026-06-23 | r/typst announcement (counter) | No GitHub releases. |
 | Typesetter | 2025-10-03 | r/typst announcement (counter) | Codeberg has no releases. Flathub may have an earlier build. License GPL-3.0, checked by hand. |
 | Typsastra | 2026-06-29 | First GitHub release | Matches the counter, which calls it "Typsastra (formerly Typstry)". |
@@ -35,7 +35,7 @@ Where each editor's arrival date came from, as of 17 October 2026. `arrived` is 
 
 ## Left out for now
 
-The weekly counter check will keep listing these until they're added or ruled out.
+Dotei, typress and TypeTex are in `data/counter-skip.yaml`, so the weekly counter check skips them. Typewriter isn't on the counter.
 
 - **Dotei:** announced on r/typst in July 2026 as a web editor for several markup languages, but not hosted or released yet.
 - **typress:** only an r/typst post ("I'm developing a new Typst editor"). Its kind and platforms couldn't be confirmed.

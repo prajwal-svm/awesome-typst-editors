@@ -36,7 +36,7 @@ while IFS=$'\t' read -r slug source; do
   fetched=$(jq -c --arg slug "$slug" --argjson item "$item" '. + {($slug): $item}' <<<"$fetched")
 done <<<"$slugs_and_sources"
 
-discussions=$(discussions_json "$REPO")
+discussions=$(discussions_json "$REPO" "$CATEGORY")
 
 jq --arg category "$CATEGORY" --argjson editors "$fetched" '
   .data.repository as $repo

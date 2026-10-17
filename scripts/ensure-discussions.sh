@@ -15,7 +15,7 @@ CATEGORY=${CATEGORY:-Editors}
 DATA=${DATA:-/data/editors.yaml}
 SITE_URL="https://prajwal-svm.github.io/awesome-typst-editors/"
 
-discussions=$(discussions_json "$REPO")
+discussions=$(discussions_json "$REPO" "$CATEGORY")
 repo_id=$(jq -r '.data.repository.id' <<<"$discussions")
 category_id=$(jq -r --arg c "$CATEGORY" \
   '[.data.repository.discussionCategories.nodes[] | select(.name == $c) | .id] | first // empty' <<<"$discussions")

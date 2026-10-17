@@ -112,6 +112,7 @@
   source: https://tangled.org/wisha.page/platen
   forum: https://forum.typst.app/t/i-made-platen-a-typst-based-equation-editor-for-linux/9896
   stars: 1
+  license: GPL-3.0
 
 - name: Texpile
   slug: texpile

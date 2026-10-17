@@ -31,28 +31,40 @@ sha1_hex() {
   fi
 }
 
-# Prints the repo id, its discussion categories, and up to 100 discussions with their counts.
+# Prints the repo id, its discussion categories, and every discussion in one category with
+# its counts, shaped like a single GraphQL response. Reads that category 100 discussions at
+# a time, so discussions in other categories never count. Prints nothing and fails if any
+# call fails: callers run it inside $(...), where set -e doesn't reach.
 discussions_json() {
-  local owner=${1%%/*} name=${1#*/} out
-  out=$(gh api graphql -f owner="$owner" -f name="$name" -f query='
+  local owner=${1%%/*} name=${1#*/} category=$2 repo category_id page nodes='[]'
+  local after=()
+  repo=$(gh api graphql -f owner="$owner" -f name="$name" -f query='
     query($owner: String!, $name: String!) {
       repository(owner: $owner, name: $name) {
         id
         discussionCategories(first: 25) { nodes { id name } }
-        discussions(first: 100) {
-          pageInfo { hasNextPage }
-          nodes {
-            title number url
-            category { name }
-            reactionGroups { content reactors { totalCount } }
-            comments { totalCount }
+      }
+    }') || return 1
+  category_id=$(jq -r --arg c "$category" \
+    '[.data.repository.discussionCategories.nodes[] | select(.name == $c) | .id] | first // empty' <<<"$repo") || return 1
+  while [ -n "$category_id" ]; do
+    page=$(gh api graphql -f owner="$owner" -f name="$name" -f category="$category_id" "${after[@]}" -f query='
+      query($owner: String!, $name: String!, $category: ID!, $cursor: String) {
+        repository(owner: $owner, name: $name) {
+          discussions(first: 100, after: $cursor, categoryId: $category) {
+            pageInfo { hasNextPage endCursor }
+            nodes {
+              title number url
+              category { name }
+              reactionGroups { content reactors { totalCount } }
+              comments { totalCount }
+            }
           }
         }
-      }
-    }')
-  if [ "$(jq -r '.data.repository.discussions.pageInfo.hasNextPage' <<<"$out")" = "true" ]; then
-    echo "more than 100 discussions: add pagination" >&2
-    return 1
-  fi
-  printf '%s\n' "$out"
+      }') || return 1
+    nodes=$(jq -c --argjson seen "$nodes" '$seen + .data.repository.discussions.nodes' <<<"$page") || return 1
+    [ "$(jq -r '.data.repository.discussions.pageInfo.hasNextPage' <<<"$page")" = "true" ] || break
+    after=(-f cursor="$(jq -r '.data.repository.discussions.pageInfo.endCursor' <<<"$page")")
+  done
+  jq -c --argjson nodes "$nodes" '.data.repository.discussions = {nodes: $nodes}' <<<"$repo"
 }

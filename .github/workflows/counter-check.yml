@@ -26,16 +26,19 @@ jobs:
           mkdir -p build
           curl -fsSL https://raw.githubusercontent.com/sermuns/days-since-last-typst-editor/main/data.csv -o build/counter.csv
           missing=$(scripts/missing-from-counter.sh build/counter.csv)
-          if [ -z "$missing" ]; then
-            echo "Every editor on the counter is listed."
-            exit 0
-          fi
-          body="The community counter lists these editors, but data/editors.yaml doesn't have them yet. Check that each one is a standalone Typst editor before adding it."$'\n\n'
-          while IFS= read -r name; do
-            body+="- [ ] $name"$'\n'
-          done <<<"$missing"
           gh label create counter-check --color c5def5 --description "Editors on the counter that aren't listed yet" --force
           number=$(gh issue list --label counter-check --state open --json number --jq '.[0].number // empty')
+          if [ -z "$missing" ]; then
+            echo "Every editor on the counter is listed or ruled out."
+            if [ -n "$number" ]; then
+              gh issue close "$number" --comment "Every editor on the counter is now listed or ruled out."
+            fi
+            exit 0
+          fi
+          body="The community counter lists these editors, but data/editors.yaml doesn't have them yet. Check that each one is a standalone Typst editor, then add it to data/editors.yaml, or to data/counter-skip.yaml with the reason it's left out."$'\n\n'
+          while IFS= read -r name; do
+            body+="- $name"$'\n'
+          done <<<"$missing"
           if [ -n "$number" ]; then
             gh issue edit "$number" --body "$body"
           else

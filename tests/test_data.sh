@@ -37,6 +37,13 @@ bad_msgs=(
   'bad date "2026-13-40" for "aurora"'
   'bad slug "Aurora Editor"'
 )
+bad_files+=(description-number unknown-field stars-text platforms-number)
+bad_msgs+=(
+  '"aurora" has a description that isn'"'"'t text'
+  'unknown field "homepge" for "aurora"'
+  '"aurora" has stars that aren'"'"'t a whole number'
+  '"aurora" has platforms that aren'"'"'t text'
+)
 for i in "${!bad_files[@]}"; do
   assert_fails_with "query --input data=/tests/fixtures/bad/${bad_files[$i]}.yaml --input today=2026-10-17" "${bad_msgs[$i]}"
 done
