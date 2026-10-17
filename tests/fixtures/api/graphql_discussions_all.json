@@ -1,0 +1,98 @@
+{
+  "data": {
+    "repository": {
+      "id": "R_test",
+      "discussionCategories": {
+        "nodes": [
+          {
+            "id": "DIC_test",
+            "name": "Editors"
+          },
+          {
+            "id": "DIC_general",
+            "name": "General"
+          }
+        ]
+      },
+      "discussions": {
+        "pageInfo": {
+          "hasNextPage": false
+        },
+        "nodes": [
+          {
+            "title": "aurora",
+            "number": 1,
+            "url": "https://github.com/prajwal-svm/awesome-typst-editors/discussions/1",
+            "category": {
+              "name": "Editors"
+            },
+            "reactionGroups": [],
+            "comments": {
+              "totalCount": 0
+            }
+          },
+          {
+            "title": "bramble",
+            "number": 2,
+            "url": "https://github.com/prajwal-svm/awesome-typst-editors/discussions/2",
+            "category": {
+              "name": "Editors"
+            },
+            "reactionGroups": [],
+            "comments": {
+              "totalCount": 0
+            }
+          },
+          {
+            "title": "cinder",
+            "number": 3,
+            "url": "https://github.com/prajwal-svm/awesome-typst-editors/discussions/3",
+            "category": {
+              "name": "Editors"
+            },
+            "reactionGroups": [],
+            "comments": {
+              "totalCount": 0
+            }
+          },
+          {
+            "title": "delta",
+            "number": 4,
+            "url": "https://github.com/prajwal-svm/awesome-typst-editors/discussions/4",
+            "category": {
+              "name": "Editors"
+            },
+            "reactionGroups": [],
+            "comments": {
+              "totalCount": 0
+            }
+          },
+          {
+            "title": "echo",
+            "number": 5,
+            "url": "https://github.com/prajwal-svm/awesome-typst-editors/discussions/5",
+            "category": {
+              "name": "Editors"
+            },
+            "reactionGroups": [],
+            "comments": {
+              "totalCount": 0
+            }
+          },
+          {
+            "title": "foxglove",
+            "number": 6,
+            "url": "https://github.com/prajwal-svm/awesome-typst-editors/discussions/6",
+            "category": {
+              "name": "Editors"
+            },
+            "reactionGroups": [],
+            "comments": {
+              "totalCount": 0
+            }
+          }
+        ]
+      }
+    }
+  }
+}
