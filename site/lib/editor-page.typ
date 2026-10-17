@@ -1,6 +1,7 @@
 // One editor's page: details, links, and its hearts and comments.
 #import "data.typ": base, repo-id, category-id, kind-label, day-label
 #import "copy.typ"
+#import "card.typ": screenshot-url
 
 #let giscus(e) = html.elem("script", attrs: (
   src: "https://giscus.app/client.js",
@@ -22,13 +23,27 @@
 ))
 
 #let editor-page(e) = html.elem("article", attrs: (class: "editor"), {
-  html.elem("img", attrs: (
-    class: "editor-image",
-    src: base + "editors/" + e.slug + "/og.png",
-    alt: e.name,
-    width: "1200",
-    height: "630",
-  ))
+  if e.screenshot != none {
+    let source = e.screenshot.source
+    let label = if e.screenshot.at("from", default: "readme") == "website" {
+      source.replace(regex("^https?://"), "").trim("/", at: end)
+    } else { copy.screenshot-readme }
+    html.elem("figure", attrs: (class: "editor-shot"), {
+      html.elem("img", attrs: (src: screenshot-url(e), alt: copy.screenshot-alt(e.name), width: "1280", height: "720"))
+      html.elem("figcaption", {
+        copy.screenshot-from
+        html.elem("a", attrs: (href: source), label)
+      })
+    })
+  } else {
+    html.elem("img", attrs: (
+      class: "editor-image",
+      src: base + "editors/" + e.slug + "/og.png",
+      alt: e.name,
+      width: "1200",
+      height: "630",
+    ))
+  }
   html.h1(e.name)
   if e.description != none { html.p(class: "editor-desc", e.description) }
   if e.builder != none { html.p(class: "editor-by", copy.by(e.builder)) }

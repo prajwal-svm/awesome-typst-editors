@@ -41,6 +41,9 @@
 #let repo-id = generated.at("repo_id", default: none)
 #let category-id = generated.at("category_id", default: none)
 
+// Screenshot sources: slug -> (file, source, from), maintained by hand in data/screenshots.yaml.
+#let screenshots = yaml(sys.inputs.at("screenshots", default: "/data/screenshots.yaml"))
+
 #let slug-pattern = regex("^[a-z0-9]+(-[a-z0-9]+)*$")
 
 #let validate(list) = {
@@ -91,10 +94,19 @@
     hearts: discussion.at("hearts", default: 0),
     comments: discussion.at("comments", default: 0),
     discussion-url: discussion.at("url", default: none),
+    screenshot: if screenshots == none { none } else { screenshots.at(e.slug, default: none) },
   )
 }
 
 #let editors = validate(yaml(sys.inputs.at("data", default: "/data/editors.yaml"))).map(merge)
+
+// Every screenshot must belong to a listed editor.
+#if screenshots != none {
+  let slugs = editors.map(e => e.slug)
+  for slug in screenshots.keys() {
+    assert(slug in slugs, message: "screenshot for unknown editor \"" + slug + "\"")
+  }
+}
 
 // On the site once an editor has been public for 30 days; in the README with 50+ stars too.
 #let cutoff = today - duration(days: 30)

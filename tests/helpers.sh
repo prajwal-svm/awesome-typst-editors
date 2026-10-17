@@ -47,6 +47,7 @@ FIXTURE_INPUTS=(
   --input generated=/tests/fixtures/generated.json
   --input today=2026-10-17
   --input base=/awesome-typst-editors/
+  --input screenshots=/tests/fixtures/screenshots.yaml
 )
 TYPST_BUNDLE=(--format bundle --features bundle,html --root .)
 

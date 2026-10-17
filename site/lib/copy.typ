@@ -57,3 +57,7 @@
 #let readme-license-heading = "License"
 #let readme-license = "[CC0 1.0](LICENSE)"
 #let readme-fallback-description(kind) = "A Typst " + kind + " editor"
+
+#let screenshot-alt(name) = "Screenshot of " + name
+#let screenshot-from = "Screenshot from "
+#let screenshot-readme = "the project's README"

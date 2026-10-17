@@ -137,7 +137,7 @@
   kinds: [web]
   platforms: [Self-hosted]
   description: A collaborative, self-hosted editing platform around Typst.
-  source: https://github.com/confirm/typarr
+  source: https://github.com/confirm/tino
   homepage: https://docs.tinotype.com/
   forum: https://forum.typst.app/t/8914
 

@@ -1,6 +1,7 @@
 // The page shell: head tags, header, footer, and the view switcher.
 #import "data.typ": site-url, repo-url, base
 #import "copy.typ"
+#import "icons.typ"
 
 #let meta-property(property, content) = html.elem("meta", attrs: (property: property, content: content))
 
@@ -40,10 +41,13 @@
     if json-ld.len() > 0 { html.script(type: "application/ld+json", ld-json(json-ld)) }
   })
   html.body({
-    html.header(class: "site-header", {
-      link-to(base, copy.site-name, class: "site-name")
+    html.header(class: "site-header", html.div(class: "header-inner", {
+      html.elem("a", attrs: (class: "brand", href: base), {
+        icons.heart
+        html.span(copy.site-name)
+      })
       link-to(repo-url + "/issues/new?template=add-editor.yml", copy.add-editor, class: "add-editor")
-    })
+    }))
     html.main(body)
     html.footer(class: "site-footer", {
       html.p(copy.footer-line)

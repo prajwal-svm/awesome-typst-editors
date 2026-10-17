@@ -1,0 +1,4 @@
+nope:
+  file: /tests/fixtures/screenshots/aurora.png
+  source: https://example.org
+  from: website

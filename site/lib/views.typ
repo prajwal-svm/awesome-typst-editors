@@ -1,5 +1,5 @@
 // The three ways to browse the same cards.
-#import "data.typ": by-name, by-arrival, by-kind, kind-label, month-label, day-label
+#import "data.typ": by-name, by-arrival, by-kind, kind-label, month-label
 #import "layout.typ": view-nav
 #import "card.typ": card
 #import "copy.typ"
@@ -28,12 +28,7 @@
   for group in groups {
     html.section(class: "month-group", {
       html.h2(class: "month", group.month)
-      html.div(class: "grid", for e in group.editors {
-        html.div(class: "timeline-entry", {
-          html.p(class: "arrived", copy.arrived(day-label(e.arrived)))
-          card(e)
-        })
-      })
+      grid(group.editors)
     })
   }
 }

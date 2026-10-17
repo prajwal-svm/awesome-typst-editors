@@ -1,0 +1,5 @@
+# Fixture: screenshot sources for the test editors.
+aurora:
+  file: /tests/fixtures/screenshots/aurora.png
+  source: https://github.com/example/aurora
+  from: readme

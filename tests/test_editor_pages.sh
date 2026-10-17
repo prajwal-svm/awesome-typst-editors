@@ -29,6 +29,10 @@ assert_contains "$AURORA" '<link rel="canonical" href="https://prajwal-svm.githu
 assert_contains "$AURORA" 'content="https://prajwal-svm.github.io/awesome-typst-editors/editors/aurora/og.png"'
 assert_contains "$AURORA" 'name="twitter:card" content="summary_large_image"'
 
+assert_contains "$AURORA" '<figure class="editor-shot"><img src="/awesome-typst-editors/screenshots/aurora.png" alt="Screenshot of Aurora"'
+assert_contains "$AURORA" 'Screenshot from <a href="https://github.com/example/aurora">'
+assert_contains "$OUT/editors/bramble/index.html" 'class="editor-image" src="/awesome-typst-editors/editors/bramble/og.png"'
+
 NOIDS="$T/noids/editors/aurora/index.html"
 assert_not_contains "$NOIDS" "giscus.app"
 assert_contains "$NOIDS" "Hearts and comments show up on the live site."

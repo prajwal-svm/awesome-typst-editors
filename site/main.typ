@@ -45,6 +45,10 @@
     editor-page(e),
   ))
   document(path + "og.png", og-image(e))
+  if e.screenshot != none {
+    let ext = e.screenshot.file.split(".").last()
+    asset("screenshots/" + e.slug + "." + ext, read(e.screenshot.file, encoding: none))
+  }
 }
 
 #document("og.png", site-og-image(n))

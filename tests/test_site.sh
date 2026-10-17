@@ -24,6 +24,9 @@ order=$(grep -o 'class="card" href="[^"]*"' "$INDEX" | sed 's/.*editors\///; s/\
 assert_eq "$order" "aurora bramble delta echo foxglove" "A to Z card order"
 
 card aurora "$INDEX" >"$T/aurora.html"
+assert_contains "$T/aurora.html" '<img class="card-shot" src="/awesome-typst-editors/screenshots/aurora.png" alt="Screenshot of Aurora"'
+assert_not_contains "$T/aurora.html" 'card-banner'
+assert_file "$OUT/screenshots/aurora.png"
 assert_contains "$T/aurora.html" "<li>Open source</li>"
 assert_contains "$T/aurora.html" "by example"
 assert_contains "$T/aurora.html" 'aria-label="3 hearts"'
@@ -34,6 +37,8 @@ assert_not_contains "$INDEX" "💬"
 assert_not_contains "$INDEX" "♥"
 
 card bramble "$INDEX" >"$T/bramble.html"
+assert_contains "$T/bramble.html" 'class="card-banner kind-web"'
+assert_not_contains "$T/bramble.html" 'card-shot'
 assert_contains "$T/bramble.html" 'class="card-name">bramble<'
 assert_not_contains "$T/bramble.html" "card-by"
 assert_not_contains "$T/bramble.html" "card-desc"
@@ -50,6 +55,8 @@ TIMELINE="$OUT/timeline/index.html"
 months=$(grep -o 'class="month">[^<]*' "$TIMELINE" | sed 's/.*>//' | paste -sd'|' -)
 assert_eq "$months" "September 2026|August 2026|March 2026|May 2025" "timeline month order"
 assert_contains "$TIMELINE" "Arrived 17 Sep 2026"
+card bramble "$TIMELINE" >"$T/bramble-timeline.html"
+assert_contains "$T/bramble-timeline.html" "Arrived 17 Sep 2026"
 
 assert_eq "$(head -c 31 "$INDEX")" '<!DOCTYPE html><html lang="en">' "document start"
 assert_contains "$INDEX" '<link rel="canonical" href="https://prajwal-svm.github.io/awesome-typst-editors/">'

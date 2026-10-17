@@ -1,0 +1,83 @@
+# Screenshots on cards and editor pages. Each image comes from the project's own README
+# (from: readme) or is a capture of its website (from: website), credited on the editor page.
+# Editors without an entry get the plain card banner. A builder can ask for removal or a change.
+dbv-typst-editor:
+  file: /assets/screenshots/dbv-typst-editor.jpg
+  source: https://github.com/davidbuenov/dbv-typst-editor
+  from: readme
+hilbert:
+  file: /assets/screenshots/hilbert.jpg
+  source: https://github.com/aburousan/hilbert-editor
+  from: readme
+katvan:
+  file: /assets/screenshots/katvan.jpg
+  source: https://github.com/IgKh/katvan
+  from: readme
+leftblank:
+  file: /assets/screenshots/leftblank.jpg
+  source: https://github.com/leftblank-app/leftblank
+  from: readme
+oleafly:
+  file: /assets/screenshots/oleafly.jpg
+  source: https://github.com/Oleafly/Oleafly
+  from: readme
+texlyre:
+  file: /assets/screenshots/texlyre.jpg
+  source: https://github.com/TeXlyre/texlyre
+  from: readme
+texpile:
+  file: /assets/screenshots/texpile.jpg
+  source: https://github.com/texpile/texpile
+  from: readme
+tino:
+  file: /assets/screenshots/tino.jpg
+  source: https://github.com/confirm/tino
+  from: readme
+typeset:
+  file: /assets/screenshots/typeset.jpg
+  source: https://twarge.com/typeset
+  from: website
+typesetter:
+  file: /assets/screenshots/typesetter.jpg
+  source: https://flathub.org/apps/net.trowell.typesetter
+  from: website
+typsastra:
+  file: /assets/screenshots/typsastra.jpg
+  source: https://github.com/Sovichea/typsastra
+  from: readme
+typst-app:
+  file: /assets/screenshots/typst-app.jpg
+  source: https://typst.app
+  from: website
+typst-desktop:
+  file: /assets/screenshots/typst-desktop.jpg
+  source: https://github.com/SirBlobby/typst-desktop
+  from: readme
+typst-editor-ipad:
+  file: /assets/screenshots/typst-editor-ipad.jpg
+  source: https://apps.apple.com/app/id6760779674
+  from: website
+typst-online-editor:
+  file: /assets/screenshots/typst-online-editor.jpg
+  source: https://typst-online-editor.vercel.app
+  from: website
+typst-wysiwyg:
+  file: /assets/screenshots/typst-wysiwyg.jpg
+  source: https://github.com/ortic/typst-wysiwyg
+  from: readme
+typstedit:
+  file: /assets/screenshots/typstedit.jpg
+  source: https://github.com/SuperMegaFort/TypstEdit
+  from: readme
+typstify:
+  file: /assets/screenshots/typstify.jpg
+  source: https://typstify.com
+  from: website
+typstwriter:
+  file: /assets/screenshots/typstwriter.jpg
+  source: https://github.com/Bzero/typstwriter
+  from: readme
+typwriter:
+  file: /assets/screenshots/typwriter.jpg
+  source: https://typwriter.vercel.app
+  from: website

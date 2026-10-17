@@ -24,7 +24,7 @@ assert_eq "$(jq -r .hearts.foxglove <<<"$R")" '99' "fixture gives foxglove the m
 assert_eq "$(jq -c .az <<<"$R")" '["aurora","bramble","delta","echo","foxglove"]' "A to Z ignores hearts"
 
 # Without fetched data, everything still works with zero counts.
-R0=$(query --input data=/tests/fixtures/editors.yaml --input today=2026-10-17 2>/dev/null) || fail "query without generated data failed"
+R0=$(query --input data=/tests/fixtures/editors.yaml --input today=2026-10-17 --input screenshots=/tests/fixtures/screenshots.yaml 2>/dev/null) || fail "query without generated data failed"
 assert_eq "$(jq -c .site <<<"$R0")" '["aurora","bramble","delta","echo","foxglove"]' "site without generated data"
 assert_eq "$(jq -c '[.hearts[]] | unique' <<<"$R0")" '[0]' "all hearts are 0 without generated data"
 
@@ -40,5 +40,7 @@ bad_msgs=(
 for i in "${!bad_files[@]}"; do
   assert_fails_with "query --input data=/tests/fixtures/bad/${bad_files[$i]}.yaml --input today=2026-10-17" "${bad_msgs[$i]}"
 done
+
+assert_fails_with "query --input data=/tests/fixtures/editors.yaml --input today=2026-10-17 --input screenshots=/tests/fixtures/bad/screenshots-unknown.yaml" 'screenshot for unknown editor "nope"'
 
 finish
