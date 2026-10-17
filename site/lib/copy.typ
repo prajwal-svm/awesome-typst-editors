@@ -27,3 +27,23 @@
 #let timeline-description(n) = "When each of " + str(n) + " Typst editors arrived, newest first."
 #let kind-title = "Typst editors by kind: desktop, web, mobile, terminal | Awesome Typst Editors"
 #let kind-description(n) = str(n) + " Typst editors grouped by kind: desktop, web, mobile and terminal."
+
+#let link-code = "Code"
+#let link-website = "Website"
+#let link-forum = "Typst forum post"
+#let link-reddit = "Reddit post"
+#let discussion-heading = "Hearts and comments"
+#let discussion-offline = "Hearts and comments show up on the live site."
+#let discussion-open = "Open the discussion on GitHub"
+
+#let editor-title(e) = if e.description == none {
+  e.name + ": a Typst editor | Awesome Typst Editors"
+} else {
+  e.name + ": " + e.description.trim(".", at: end) + " | Awesome Typst Editors"
+}
+#let editor-description(e) = if e.description == none { e.name + " is a Typst editor." } else { e.description }
+
+#let not-found-title = "Page not found | Awesome Typst Editors"
+#let not-found-description = "This page doesn't exist. Every Typst editor is one click away."
+#let not-found-heading = "This page doesn't exist"
+#let not-found-link = "See all Typst editors"
