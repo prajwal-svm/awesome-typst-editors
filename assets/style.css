@@ -118,7 +118,7 @@ h1 { font-size: clamp(1.7rem, 4.5vw, 2.6rem); line-height: 1.15; margin: 20px 0 
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  aspect-ratio: 16 / 7;
+  height: 112px;
   padding: 12px 14px;
 }
 .kind-desktop { background: var(--desktop); }
