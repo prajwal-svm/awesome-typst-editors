@@ -1,10 +1,11 @@
 // Bundle entry: every page and file the site publishes.
-#import "lib/data.typ": site-editors, by-name, by-arrival, base
+#import "lib/data.typ": site-editors, readme-editors, by-name, by-arrival, base
 #import "lib/layout.typ": page, link-to
 #import "lib/views.typ": az-view, timeline-view, kind-view
 #import "lib/editor-page.typ": editor-page
 #import "lib/og.typ": og-image, site-og-image
 #import "lib/seo.typ": item-list-ld, software-ld, sitemap
+#import "lib/readme.typ": readme-markdown
 #import "lib/copy.typ"
 
 #let n = site-editors.len()
@@ -59,5 +60,6 @@
 ))
 
 #asset("sitemap.xml", sitemap(site-editors))
+#asset("README.md", readme-markdown(readme-editors))
 #asset("style.css", read("/assets/style.css"))
 #asset("favicon.svg", read("/assets/favicon.svg"))
