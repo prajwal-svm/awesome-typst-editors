@@ -1,0 +1,180 @@
+:root {
+  color-scheme: light dark;
+  --bg: #f7f6f2;
+  --surface: #ffffff;
+  --text: #1f2328;
+  --muted: #59636e;
+  --border: #d9dde3;
+  --accent: #0b5cad;
+  --heart: #d6204f;
+  --focus-bg: #e5eefa;
+  --desktop: #d9e6fb;
+  --web: #d8f0df;
+  --mobile: #fbe9c7;
+  --terminal: #e4e6ea;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1115;
+    --surface: #171a21;
+    --text: #e6e8eb;
+    --muted: #9ba4b0;
+    --border: #2b313b;
+    --accent: #79b0ff;
+    --heart: #ff5c8a;
+    --focus-bg: #1c2940;
+    --desktop: #1d2a42;
+    --web: #1a3125;
+    --mobile: #3a2d15;
+    --terminal: #252930;
+  }
+}
+
+* { box-sizing: border-box; }
+
+/* Focus shows as a background tint or a border colour, never a ring. */
+:focus, :focus-visible { outline: none; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+}
+
+a { color: var(--accent); }
+a:focus-visible { background: var(--focus-bg); border-radius: 4px; }
+
+.site-header, main, .site-footer {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 20px;
+  padding-bottom: 12px;
+}
+.site-name { font-weight: 700; color: var(--text); text-decoration: none; }
+.add-editor {
+  font-size: 0.9rem;
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  text-decoration: none;
+}
+.add-editor:hover, .add-editor:focus-visible { border-color: var(--accent); background: var(--focus-bg); }
+
+h1 { font-size: clamp(1.7rem, 4.5vw, 2.6rem); line-height: 1.15; margin: 20px 0 6px; }
+.lede { color: var(--muted); margin: 0 0 20px; }
+
+.views {
+  display: inline-flex;
+  gap: 4px;
+  padding: 4px;
+  margin-bottom: 24px;
+  border-radius: 10px;
+  background: var(--border);
+}
+.views a {
+  padding: 6px 14px;
+  border-radius: 8px;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.92rem;
+}
+.views a[aria-current="page"] { background: var(--surface); color: var(--text); font-weight: 600; }
+.views a:hover, .views a:focus-visible { background: var(--focus-bg); color: var(--text); }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--text);
+  text-decoration: none;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+.card:hover { border-color: var(--accent); transform: translateY(-2px); }
+.card:focus-visible { border-color: var(--accent); background: var(--focus-bg); }
+
+.card-banner {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  aspect-ratio: 16 / 7;
+  padding: 12px 14px;
+}
+.kind-desktop { background: var(--desktop); }
+.kind-web { background: var(--web); }
+.kind-mobile { background: var(--mobile); }
+.kind-terminal { background: var(--terminal); }
+.banner-name { font-size: 1.25rem; font-weight: 700; line-height: 1.2; }
+.banner-kind { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+
+.card-name { font-size: 1rem; margin: 12px 14px 2px; }
+.card-desc { font-size: 0.9rem; color: var(--muted); margin: 0 14px 8px; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; margin: 4px 14px 12px; padding: 0; }
+.chips li {
+  font-size: 0.72rem;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--muted);
+}
+
+.card-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: auto;
+  padding: 10px 14px 12px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.card-counts { display: inline-flex; gap: 10px; margin-left: auto; }
+.card-hearts { color: var(--heart); }
+
+.month, .kind-group h2 { font-size: 1.1rem; margin: 8px 0 12px; }
+.timeline-entry { display: flex; flex-direction: column; gap: 6px; }
+.arrived { font-size: 0.8rem; color: var(--muted); margin: 0; }
+
+.editor { max-width: 760px; margin: 12px 0 40px; }
+.editor-image { width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--border); }
+.editor h1 { margin-top: 16px; }
+.editor-links { display: flex; flex-wrap: wrap; gap: 6px 16px; list-style: none; padding: 0; }
+.discussion {
+  margin-top: 28px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+}
+.discussion h2 { font-size: 1.05rem; margin-top: 0; }
+
+.site-footer {
+  padding-top: 20px;
+  padding-bottom: 40px;
+  border-top: 1px solid var(--border);
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.site-footer .dot { color: var(--border); }
