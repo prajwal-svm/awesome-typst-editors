@@ -1,24 +1,31 @@
 // The three ways to browse the same cards.
-#import "data.typ": by-name, by-arrival, by-kind, kind-label, month-label
-#import "layout.typ": view-nav
+#import "data.typ": base, by-name, by-arrival, by-kind, kind-label, month-label
+#import "layout.typ": link-to
 #import "card.typ": card
 #import "copy.typ"
 
-#let intro(n, current) = {
-  html.h1(copy.hero(n))
+#let intro(list) = html.div(class: "hero", {
+  html.p(class: "eyebrow", copy.eyebrow(list.len()))
+  html.h1({
+    copy.hero-lead(list.len())
+    html.span(class: "mark", copy.hero-mark)
+  })
   html.p(class: "lede", copy.lede)
-  view-nav(current)
-}
+  html.ul(class: "pills", {
+    html.li(link-to(base, copy.all-editors))
+    for group in by-kind(list) { html.li(link-to(base + "kind/#" + group.kind, kind-label(group.kind))) }
+  })
+})
 
 #let grid(list) = html.div(class: "grid", for e in list { card(e) })
 
 #let az-view(list) = {
-  intro(list.len(), "az")
+  intro(list)
   grid(by-name(list))
 }
 
 #let timeline-view(list) = {
-  intro(list.len(), "timeline")
+  intro(list)
   let groups = ()
   for e in by-arrival(list) {
     let month = month-label(e.arrived)
@@ -34,7 +41,7 @@
 }
 
 #let kind-view(list) = {
-  intro(list.len(), "kind")
+  intro(list)
   for group in by-kind(list) {
     html.section(class: "kind-group", {
       html.h2(id: group.kind, kind-label(group.kind))

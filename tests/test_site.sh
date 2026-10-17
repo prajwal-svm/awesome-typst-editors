@@ -19,7 +19,10 @@ for f in index.html timeline/index.html kind/index.html style.css favicon.svg; d
 done
 
 INDEX="$OUT/index.html"
-assert_contains "$INDEX" "5 Typst editors and counting"
+assert_contains "$INDEX" '5 Typst editors and <span class="mark">counting</span>'
+assert_contains "$INDEX" 'class="eyebrow"'
+assert_contains "$INDEX" 'href="/awesome-typst-editors/kind/#desktop"'
+assert_contains "$INDEX" 'href="/awesome-typst-editors/kind/#terminal"'
 order=$(grep -o 'class="card" href="[^"]*"' "$INDEX" | sed 's/.*editors\///; s/\/"$//' | paste -sd' ' -)
 assert_eq "$order" "aurora bramble delta echo foxglove" "A to Z card order"
 
@@ -32,6 +35,7 @@ assert_contains "$T/aurora.html" "by example"
 assert_contains "$T/aurora.html" 'aria-label="3 hearts"'
 assert_contains "$T/aurora.html" 'aria-label="2 comments"'
 assert_contains "$T/aurora.html" 'class="icon icon-heart"'
+assert_contains "$T/aurora.html" '<span class="card-icon" aria-hidden="true">A</span>'
 assert_contains "$T/aurora.html" 'class="icon icon-comment"'
 assert_not_contains "$INDEX" "💬"
 assert_not_contains "$INDEX" "♥"

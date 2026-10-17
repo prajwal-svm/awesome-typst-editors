@@ -61,3 +61,8 @@
 #let screenshot-alt(name) = "Screenshot of " + name
 #let screenshot-from = "Screenshot from "
 #let screenshot-readme = "the project's README"
+
+#let eyebrow(n) = "The Typst editor directory · " + str(n) + " editors"
+#let hero-lead(n) = str(n) + " Typst editors and "
+#let hero-mark = "counting"
+#let all-editors = "All editors"

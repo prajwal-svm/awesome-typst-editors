@@ -26,20 +26,23 @@
       }
     })
     html.div(class: "card-body", {
-      html.div(class: "card-row", {
-        html.ul(class: "chips", {
-          for k in e.kinds { html.li(kind-label(k)) }
-          if e.open-source { html.li(copy.open-source) }
+      html.div(class: "card-head", {
+        html.elem("span", attrs: (class: "card-icon", "aria-hidden": "true"), upper(e.name.clusters().first()))
+        html.div(class: "card-title", {
+          html.h3(class: "card-name", e.name)
+          if e.builder != none { html.p(class: "card-by", copy.by(e.builder)) }
         })
         html.elem("span", attrs: (class: "card-hearts", "aria-label": copy.hearts-label(e.hearts)), {
           icons.heart
           str(e.hearts)
         })
       })
-      html.h3(class: "card-name", e.name)
-      if e.builder != none { html.p(class: "card-by", copy.by(e.builder)) }
       if e.description != none { html.p(class: "card-desc", e.description) }
-      if e.platforms.len() > 0 { html.p(class: "card-platforms", e.platforms.join(" · ")) }
+      html.ul(class: "chips", {
+        for k in e.kinds { html.li(kind-label(k)) }
+        if e.open-source { html.li(copy.open-source) }
+        for p in e.platforms { html.li(p) }
+      })
       html.div(class: "card-foot", {
         html.span(class: "card-arrived", copy.arrived(day-label(e.arrived)))
         html.elem("span", attrs: (class: "card-comments", "aria-label": copy.comments-label(e.comments)), {

@@ -23,7 +23,7 @@
   }
 })
 
-#let page(title: none, description: none, path: "", og-image: "og.png", json-ld: (:), body) = html.html(lang: "en", {
+#let page(title: none, description: none, path: "", og-image: "og.png", json-ld: (:), current: none, body) = html.html(lang: "en", {
   html.head({
     html.meta(charset: "utf-8")
     html.meta(name: "viewport", content: "width=device-width, initial-scale=1")
@@ -36,6 +36,9 @@
     meta-property("og:image", site-url + og-image)
     meta-property("og:type", "website")
     html.meta(name: "twitter:card", content: "summary_large_image")
+    html.link(rel: "preconnect", href: "https://fonts.googleapis.com")
+    html.elem("link", attrs: (rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: ""))
+    html.link(rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap")
     html.link(rel: "stylesheet", href: base + "style.css")
     html.link(rel: "icon", href: base + "favicon.svg", type: "image/svg+xml")
     if json-ld.len() > 0 { html.script(type: "application/ld+json", ld-json(json-ld)) }
@@ -46,7 +49,8 @@
         icons.heart
         html.span(copy.site-name)
       })
-      link-to(repo-url + "/issues/new?template=add-editor.yml", copy.add-editor, class: "add-editor")
+      view-nav(current)
+      html.div(class: "header-actions", link-to(repo-url + "/issues/new?template=add-editor.yml", copy.add-editor, class: "add-editor"))
     }))
     html.main(body)
     html.footer(class: "site-footer", {

@@ -14,6 +14,7 @@
   title: copy.az-title,
   description: copy.az-description(n),
   path: "",
+  current: "az",
   json-ld: item-list-ld(by-name(site-editors), ""),
   az-view(site-editors),
 ))
@@ -22,6 +23,7 @@
   title: copy.timeline-title,
   description: copy.timeline-description(n),
   path: "timeline/",
+  current: "timeline",
   json-ld: item-list-ld(by-arrival(site-editors), "timeline/"),
   timeline-view(site-editors),
 ))
@@ -30,6 +32,7 @@
   title: copy.kind-title,
   description: copy.kind-description(n),
   path: "kind/",
+  current: "kind",
   json-ld: item-list-ld(by-name(site-editors), "kind/"),
   kind-view(site-editors),
 ))
