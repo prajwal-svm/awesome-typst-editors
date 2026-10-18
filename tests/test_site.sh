@@ -7,11 +7,11 @@ trap 'rm -rf "$T"' EXIT
 OUT="$T/site"
 build_fixture_site "$OUT" || fail "fixture site did not build"
 
-# Prints one card's HTML: the anchor whose href points at the given slug.
+# Prints one card's HTML: the <article> whose card link points at the given slug.
 card() { # slug file
   local html nl=$'\n'
   html=$(<"$2")
-  printf '%s\n' "${html//<\/a>/</a>$nl}" | grep -F "href=\"/awesome-typst-editors/editors/$1/\"" | head -1
+  printf '%s\n' "${html//<\/article>/</article>$nl}" | grep -F "href=\"/awesome-typst-editors/editors/$1/\"" | head -1
 }
 
 for f in index.html timeline/index.html kind/index.html style.css favicon.svg; do
@@ -23,8 +23,10 @@ assert_contains "$INDEX" '5 Typst editors and <span class="mark">counting</span>
 assert_contains "$INDEX" 'class="eyebrow"'
 assert_contains "$INDEX" 'href="/awesome-typst-editors/kind/#desktop"'
 assert_contains "$INDEX" 'href="/awesome-typst-editors/kind/#terminal"'
-order=$(grep -o 'class="card" href="[^"]*"' "$INDEX" | sed 's/.*editors\///; s/\/"$//' | paste -sd' ' -)
+order=$(grep -o 'class="card-link" href="[^"]*"' "$INDEX" | sed 's/.*editors\///; s/\/"$//' | paste -sd' ' -)
 assert_eq "$order" "aurora bramble delta echo foxglove" "A to Z card order"
+# Cards carry links out to each project, so a card itself can't be a link: links can't nest.
+assert_not_contains "$INDEX" '<a class="card"'
 
 card aurora "$INDEX" >"$T/aurora.html"
 assert_contains "$T/aurora.html" '<img class="card-shot" src="/awesome-typst-editors/screenshots/aurora.png" alt="Screenshot of Aurora"'
@@ -37,15 +39,36 @@ assert_contains "$T/aurora.html" 'aria-label="2 comments"'
 assert_contains "$T/aurora.html" 'class="icon icon-heart"'
 assert_contains "$T/aurora.html" '<span class="card-icon" aria-hidden="true">A</span>'
 assert_contains "$T/aurora.html" 'class="icon icon-comment"'
+assert_contains "$T/aurora.html" 'href="https://github.com/example/aurora"'
+assert_contains "$T/aurora.html" 'aria-label="Aurora on GitHub"'
+assert_contains "$T/aurora.html" 'class="icon icon-github"'
 assert_not_contains "$INDEX" "💬"
 assert_not_contains "$INDEX" "♥"
 
 card bramble "$INDEX" >"$T/bramble.html"
 assert_contains "$T/bramble.html" 'class="card-banner kind-web"'
 assert_not_contains "$T/bramble.html" 'card-shot'
-assert_contains "$T/bramble.html" 'class="card-name">bramble<'
+assert_contains "$T/bramble.html" 'class="card-link" href="/awesome-typst-editors/editors/bramble/">bramble<'
+assert_contains "$T/bramble.html" 'href="https://bramble.example"'
+assert_contains "$T/bramble.html" 'aria-label="bramble website"'
+assert_not_contains "$T/bramble.html" 'icon-github'
+
+card delta "$INDEX" >"$T/delta.html"
+assert_contains "$T/delta.html" 'aria-label="Delta on Codeberg"'
+assert_contains "$T/delta.html" 'class="icon icon-code"'
 assert_not_contains "$T/bramble.html" "card-by"
 assert_not_contains "$T/bramble.html" "card-desc"
+
+# No code and no website: the card links to the announcement post instead, the forum one first.
+build_fixture_site "$T/announce" --input data=/tests/fixtures/editors-announce.yaml \
+  --input screenshots=/tests/fixtures/screenshots-empty.yaml || fail "announcement fixture did not build"
+card herald "$T/announce/index.html" >"$T/herald.html"
+assert_contains "$T/herald.html" 'href="https://www.reddit.com/r/typst/comments/herald/"'
+assert_contains "$T/herald.html" 'aria-label="Herald announcement post"'
+assert_contains "$T/herald.html" 'class="icon icon-megaphone"'
+card crier "$T/announce/index.html" >"$T/crier.html"
+assert_contains "$T/crier.html" 'href="https://forum.typst.app/t/1"'
+assert_not_contains "$T/crier.html" 'reddit.com'
 
 card echo "$INDEX" >"$T/echo.html"
 assert_contains "$T/echo.html" "Echo [Beta] &amp; Co"

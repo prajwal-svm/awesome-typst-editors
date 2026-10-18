@@ -39,4 +39,4 @@ Know an editor that's missing? Use the [add an editor form](https://github.com/p
 
 ## License
 
-The list and the site's code are under [CC0 1.0](LICENSE). Screenshots belong to their projects. The heart and comment icons come from [Lucide](https://lucide.dev) and are under the [ISC license](assets/LUCIDE-LICENSE.txt).
+The list and the site's code are under [CC0 1.0](LICENSE). Screenshots belong to their projects. The icons come from [Lucide](https://lucide.dev) and are under the [ISC license](assets/LUCIDE-LICENSE.txt), except the GitHub mark, which belongs to GitHub.

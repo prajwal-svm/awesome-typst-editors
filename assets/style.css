@@ -170,6 +170,7 @@ main, .site-footer {
   margin-bottom: 56px;
 }
 .card {
+  position: relative;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -181,7 +182,11 @@ main, .site-footer {
   transition: border-color 0.15s ease;
 }
 .card:hover { border-color: var(--strong-border); }
-.card:focus-visible { border-color: var(--faint); background: var(--soft); }
+.card:has(.card-link:focus-visible) { border-color: var(--faint); background: var(--soft); }
+/* The name's link covers the whole card; the links out sit above it. */
+.card-link { color: inherit; text-decoration: none; }
+.card-link::after { content: ""; position: absolute; inset: 0; }
+.card-link:focus-visible { background: none; }
 
 .card-media {
   display: flex;
@@ -233,6 +238,21 @@ main, .site-footer {
 .card-title { flex: 1; min-width: 0; }
 .card-name { margin: 0; font-size: 15px; font-weight: 600; line-height: 1.3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .card-by { margin: 0; font-size: 13px; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.card-actions { display: inline-flex; align-items: center; gap: 6px; }
+.card-out {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border: 1px solid var(--strong-border);
+  border-radius: 7px;
+  color: var(--text);
+}
+.card-out:hover, .card-out:focus-visible { border-color: var(--faint); background: var(--soft); }
+.card-comments { margin-left: 4px; }
 .card-hearts, .card-comments { display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; font-family: var(--mono); }
 .card-hearts { align-self: flex-start; font-size: 13px; color: var(--heart); }
 .icon { width: 15px; height: 15px; flex: none; }
@@ -266,6 +286,7 @@ main, .site-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  min-height: 26px;
   margin-top: auto;
   padding-top: 10px;
   border-top: 1px solid var(--border);
@@ -313,8 +334,10 @@ main, .site-footer {
 .editor .chips li + li::before { content: none; }
 .editor-links { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0 0 14px; padding: 0; }
 .editor-links a {
-  display: inline-block;
-  padding: 6px 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
   border: 1px solid var(--strong-border);
   border-radius: 8px;
   color: var(--text);
@@ -323,6 +346,9 @@ main, .site-footer {
   font-weight: 500;
 }
 .editor-links a:hover, .editor-links a:focus-visible { background: var(--soft); border-color: var(--faint); }
+.editor-links a.primary { border-color: var(--primary); background: var(--primary); color: var(--on-primary); }
+.editor-links a.primary:hover, .editor-links a.primary:focus-visible { border-color: var(--body); background: var(--body); }
+.editor-links .icon-arrow-up-right { width: 13px; height: 13px; opacity: 0.6; }
 .arrived { font-family: var(--mono); font-size: 12px; color: var(--muted); }
 .discussion { margin-top: 32px; padding: 20px; border: 1px solid var(--border); border-radius: 12px; background: var(--surface); }
 .discussion h2 { margin-top: 0; font-size: 16px; font-weight: 600; }

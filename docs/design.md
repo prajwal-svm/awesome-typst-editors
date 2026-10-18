@@ -70,19 +70,20 @@ Each editor also gets its own page at `/editors/<slug>/` (design call, for SEO a
 
 Same card everywhere:
 
-- card image, in the same generated style for every editor
+- card image: a screenshot, or a plain banner (see Data)
 - name
 - one-line description
 - who built it (the repo owner, or the name the project uses)
 - small chips: kind, platforms, and "Open source" when the project has an open-source license (design call). A public repo with no license, like TypstEdit's, gets no chip. Licenses GitHub can't identify, and projects off GitHub (Typesetter on Codeberg, Platen on tangled.org), get checked by hand.
 - heart count and comment count
+- buttons straight to the project: its code (the GitHub mark for GitHub, a code icon for other hosts) and its website. An editor with neither gets its announcement post instead, the forum one first.
 
-The whole card links to the editor's page.
+A click anywhere else on the card opens the editor's page. (The card is an article whose name link covers it, since the project buttons can't sit inside a link.)
 
 ### Editor page
 
 - larger card image, name, description, builder
-- links: code, website, Typst forum post, Reddit post (whichever exist)
+- links, whichever exist: code (named after its host, like "GitHub"), website, Typst forum post, Reddit post. The first is the main, filled button.
 - arrival date
 - the comments widget with hearts and comments (see below)
 
@@ -134,7 +135,7 @@ The whole card links to the editor's page.
 ## Build and hosting
 
 - Public repo, GitHub Pages, GitHub Actions, GitHub Discussions and giscus.app. All free. No custom domain: the address is `https://prajwal-svm.github.io/awesome-typst-editors/`. A custom domain can be added later.
-- License: CC0 for everything in the repo, in place before the first public push, except the screenshots, which belong to their projects, and the two Lucide icons, which are ISC.
+- License: CC0 for everything in the repo, in place before the first public push, except the screenshots, which belong to their projects, the Lucide icons, which are ISC, and the GitHub mark, which belongs to GitHub.
 - The page is built the way the counter site is built, which already works: `typst compile main.typ . --format bundle --features bundle,html`, set up with `typst-community/setup-typst` and deployed with `actions/deploy-pages`. Pin the Typst version instead of floating on latest.
 - Workflow triggers: push to main, an hourly schedule, and manual runs. Steps: check out, fetch data and counts, compile with Typst, upload the Pages artifact, deploy.
 - The README is regenerated on every build and committed only when its text changes, which happens when the data changes or an editor crosses the 50-star line.

@@ -1,0 +1,13 @@
+# Fixture: editors whose only links are announcement posts.
+- name: Herald
+  slug: herald
+  arrived: 2026-01-01
+  kinds: [mobile]
+  reddit: https://www.reddit.com/r/typst/comments/herald/
+
+- name: Crier
+  slug: crier
+  arrived: 2026-01-01
+  kinds: [web]
+  forum: https://forum.typst.app/t/1
+  reddit: https://www.reddit.com/r/typst/comments/crier/

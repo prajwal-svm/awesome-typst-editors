@@ -45,9 +45,17 @@ ld_json "$ECHO" >"$T/echo-ld.json"
 jq -e '.["@type"] == "SoftwareApplication" and .name == "Echo [Beta] & Co" and (has("aggregateRating") | not)' "$T/echo-ld.json" >/dev/null ||
   fail "echo JSON-LD should be a SoftwareApplication named 'Echo [Beta] & Co' with no aggregateRating"
 
+# Links out to the project, named after the code host, the first one as the main button.
+assert_contains "$AURORA" 'class="primary" href="https://github.com/example/aurora"'
+assert_contains "$AURORA" '>GitHub<'
+assert_contains "$OUT/editors/delta/index.html" '>Codeberg<'
+assert_contains "$OUT/editors/foxglove/index.html" '>Tangled<'
+
 BRAMBLE="$OUT/editors/bramble/index.html"
+assert_contains "$BRAMBLE" 'class="primary" href="https://bramble.example"'
 assert_contains "$BRAMBLE" ">Website<"
-assert_not_contains "$BRAMBLE" ">Code<"
+assert_not_contains "$BRAMBLE" ">GitHub<"
+assert_not_contains "$BRAMBLE" ">Source code<"
 assert_not_contains "$BRAMBLE" ">Typst forum post<"
 assert_not_contains "$BRAMBLE" ">Reddit post<"
 assert_not_contains "$BRAMBLE" ">none<"

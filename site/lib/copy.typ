@@ -27,8 +27,13 @@
 #let kind-title = "Typst editors by kind: desktop, web, mobile, terminal | Awesome Typst Editors"
 #let kind-description(n) = str(n) + " Typst editors grouped by kind: desktop, web, mobile and terminal."
 
-#let link-code = "Code"
+#let link-source = "Source code"
 #let link-website = "Website"
+// Code hosts named on links, by domain.
+#let host-names = ("github.com": "GitHub", "codeberg.org": "Codeberg", "gitlab.com": "GitLab", "tangled.org": "Tangled")
+#let source-label(name, host) = if host == none { name + " source code" } else { name + " on " + host }
+#let website-label(name) = name + " website"
+#let announcement-label(name) = name + " announcement post"
 #let link-forum = "Typst forum post"
 #let link-reddit = "Reddit post"
 #let discussion-heading = "Hearts and comments"
@@ -55,7 +60,7 @@
 #let readme-contributing-heading = "Contributing"
 #let readme-contributing(repo-url) = "Know an editor that's missing? Use the [add an editor form](" + repo-url + "/issues/new?template=add-editor.yml) or open a pull request that edits `data/editors.yaml`. This README is generated from that file, so please don't edit it by hand."
 #let readme-license-heading = "License"
-#let readme-license = "The list and the site's code are under [CC0 1.0](LICENSE). Screenshots belong to their projects. The heart and comment icons come from [Lucide](https://lucide.dev) and are under the [ISC license](assets/LUCIDE-LICENSE.txt)."
+#let readme-license = "The list and the site's code are under [CC0 1.0](LICENSE). Screenshots belong to their projects. The icons come from [Lucide](https://lucide.dev) and are under the [ISC license](assets/LUCIDE-LICENSE.txt), except the GitHub mark, which belongs to GitHub."
 #let readme-fallback-description(kind) = "A Typst " + kind + " editor"
 
 #let screenshot-alt(name) = "Screenshot of " + name
